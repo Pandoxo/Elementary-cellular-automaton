@@ -1,7 +1,7 @@
 import pygame as pg
 
 # Input
-RULE = int(input("Input rule: "))
+RULE = int(input("Input rule: ")) % 255
 ROWS = int(input("Input number of cells in a row: "))
 # Display
 WIDTH, HEIGHT = 1280, 1280
@@ -42,7 +42,7 @@ def dec_to_bin(num):
     result = result[::-1]
     if len(result) < 8:
         result = "0" * (8-len(result)) + result
-    return result
+    return result  # return string of binary representation of number
 
 
 def create_rule(rule):
@@ -61,7 +61,8 @@ def next_gen(gen, rules):
     new_gen = [0 for _ in range(COLLS)]
 
     for i in range(1, COLLS-2):  # we skip first and last index
-        # elements before and after i
+
+        # one element before and after i
         neighbours = "".join([str(x) for x in gen[i-1:i+2]])
         new_gen[i] = rules[neighbours]
 
