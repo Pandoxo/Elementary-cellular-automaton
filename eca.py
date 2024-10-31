@@ -1,9 +1,14 @@
 import pygame as pg
+
+# Input
+RULE = int(input("Input rule: "))
+ROWS = int(input("Input number of cells in a row: "))
+# Display
 WIDTH, HEIGHT = 1280, 1280
 WINDOW = pg.display.set_mode((WIDTH, HEIGHT))
+# Board
 ROWS = 127
 COLLS = ROWS
-RULE = 88
 CELL_SIZE = WIDTH/COLLS
 BOARD = [[0 for i in range(COLLS)] for j in range(ROWS)]
 BOARD[0][COLLS//2+1] = 1
@@ -65,6 +70,7 @@ def next_gen(gen, rules):
 
 def main():
     running = True
+
     rules = create_rule(RULE)
     gen_nr = 1
     while running:
